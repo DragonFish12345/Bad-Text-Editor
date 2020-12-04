@@ -7,14 +7,16 @@ import tkinter as tk
 import buttoncommands as cmd
 import test2
 
-add1 = test2.add1()
 
 root = tk.Tk()
 
 box = tk.Entry(root, bg='skyblue')
 box.pack()
 
-button = tk.Button(root, text='add 1', command=add1)
+button = tk.Button(root, text='add 1')
 button.pack()
+
+for child in root.winfo_children():
+    child.destroy()
 
 root.mainloop()

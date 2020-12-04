@@ -13,10 +13,25 @@ root = tk.Tk()
 
 # Defining a function that clears the board
 
+deletefile = cmd.deletefile
 
-def clearboard():
-    for child in root.winfo_children:
+def refreshboard():
+    for child in root.winfo_children():
         child.destroy()
+
+    welcome_label = tk.Label(root, text='1 Text Editor\nThe Worst Text Editor in World of Programming', bg='sky blue')
+    welcome_label.pack()
+
+    clear_board_button = tk.Button(root, text='Clear Screen (Removes notices)', bg='yellow', command=refreshboard)
+    clear_board_button.pack()
+
+    openchoice = tk.Button(root, text='Open File', padx=30)
+    deletechoice = tk.Button(root, text='Delete a file', padx=30, command=deletefile)
+    newchoice = tk.Button(root, text='New File', padx=30)
+
+    newchoice.pack()
+    openchoice.pack()
+    deletechoice.pack()
 
 
 root.title('1 Text Editor')
@@ -25,8 +40,11 @@ root.geometry('700x700')
 welcome_label = tk.Label(root, text='1 Text Editor\nThe Worst Text Editor in World of Programming', bg='sky blue')
 welcome_label.pack()
 
+clear_board_button = tk.Button(root, text='Clear Screen (Removes notices)', bg='yellow', command=refreshboard)
+clear_board_button.pack()
+
 openchoice = tk.Button(root, text='Open File', padx=30)
-deletechoice = tk.Button(root, text='Delete a file', padx=30, command=cmd.deletefile)
+deletechoice = tk.Button(root, text='Delete a file', padx=30, command=deletefile)
 newchoice = tk.Button(root, text='New File', padx=30)
 
 newchoice.pack()
