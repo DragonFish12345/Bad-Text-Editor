@@ -1,7 +1,6 @@
 import tkinter as tk
 import os
 from pathlib import Path
-from time import sleep
 
 def deletefile():
     i = 0
@@ -41,7 +40,6 @@ def deletefile():
             os.remove(f'{filedir}\\{file_delete_choice}')
             afterdeleted = tk.Label(text=f'{file_delete_choice} deleted. Click the Clear Screen to clear the screen.')
             afterdeleted.pack()
-            sleep(3)
 
         if not fileexists:
             doesntexist = tk.Label(text=f'{file_delete_choice} DOES NOT EXIST')
