@@ -10,8 +10,17 @@ if not files_dir.exists():
     createdir.create_directory()
 
 root = tk.Tk()
+
+# Defining a function that clears the board
+
+
+def clearboard():
+    for child in root.winfo_children:
+        child.destroy()
+
+
 root.title('1 Text Editor')
-root.geometry('500x500')
+root.geometry('700x700')
 
 welcome_label = tk.Label(root, text='1 Text Editor\nThe Worst Text Editor in World of Programming', bg='sky blue')
 welcome_label.pack()
@@ -23,6 +32,7 @@ newchoice = tk.Button(root, text='New File', padx=30)
 newchoice.pack()
 openchoice.pack()
 deletechoice.pack()
+
 
 
 
