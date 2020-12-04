@@ -2,6 +2,35 @@ import tkinter as tk
 import os
 from pathlib import Path
 
+
+def createfile():
+    filedir = f'{Path.home()}\\1files'
+    notice = tk.Label(text=f'This file will directly be stored in {filedir}', bg='purple')
+    notice.pack()
+    new_file_entry = tk.Entry(text=f'File title')
+    new_file_entry.pack()
+    def createnewfile():
+        choice = new_file_entry.get()
+        path = f'{filedir}\\{choice}'
+        aa = Path(f'{filedir}\\{choice}')
+        does_it_exist = aa.exists()
+        if does_it_exist:
+            already_exists = tk.Label(text=f'{choice} already exists')
+            already_exists.pack()
+
+        else:
+            f = open(f'{path}', 'w')
+            created = tk.Label(text=f'{choice} File created! Press the Clear Screen button to clear the screen!')
+            created.pack()
+    continue_button = tk.Button(text='Continue', bg='orange', command=createnewfile)
+    continue_button.pack()
+
+
+
+def openfile():
+    pass
+
+
 def deletefile():
     i = 0
     filedir = f'{Path.home()}\\1files'
@@ -54,6 +83,9 @@ def deletefile():
 
     okay_button = tk.Button(text='Continue', bg='green', command=continuewithdelete)
     okay_button.pack()
+
+
+
 
 
 

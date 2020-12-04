@@ -14,6 +14,7 @@ root = tk.Tk()
 # Defining a function that clears the board
 
 deletefile = cmd.deletefile
+createfile = cmd.createfile
 
 def refreshboard():
     for child in root.winfo_children():
@@ -27,7 +28,7 @@ def refreshboard():
 
     openchoice = tk.Button(root, text='Open File', padx=30)
     deletechoice = tk.Button(root, text='Delete a file', padx=30, command=deletefile)
-    newchoice = tk.Button(root, text='New File', padx=30)
+    newchoice = tk.Button(root, text='New File', padx=30, command=createfile)
 
     newchoice.pack()
     openchoice.pack()
@@ -45,7 +46,7 @@ clear_board_button.pack()
 
 openchoice = tk.Button(root, text='Open File', padx=30)
 deletechoice = tk.Button(root, text='Delete a file', padx=30, command=deletefile)
-newchoice = tk.Button(root, text='New File', padx=30)
+newchoice = tk.Button(root, text='New File', padx=30, command=createfile)
 
 newchoice.pack()
 openchoice.pack()
