@@ -2,6 +2,26 @@ import tkinter as tk
 import os
 from pathlib import Path
 
+def allfiles():
+    filedir = f'{Path.home()}\\1files'
+    path = Path(filedir)
+    a = path.glob('*')
+    b = ''
+    list = []
+    for x in a:
+        x = str(x)
+        x = x.replace(f'{filedir}\\', '')
+        list.append(x)
+    if list == []:
+        b = f'You have no files currently in your {filedir} directory!'
+        file_label = tk.Label(text=b, bg='red')
+        file_label.pack()
+        return None
+    else:
+        for x in list:
+            b += f'{x}, '
+        file_label = tk.Label(text=b, bg='green')
+        file_label.pack()
 
 def createfile():
     filedir = f'{Path.home()}\\1files'
@@ -83,9 +103,4 @@ def deletefile():
 
     okay_button = tk.Button(text='Continue', bg='green', command=continuewithdelete)
     okay_button.pack()
-
-
-
-
-
 

@@ -5,6 +5,7 @@ import buttoncommands as cmd
 
 home_dir = Path.home()
 files_dir = Path(f'{home_dir}\\1files')
+path = f'{home_dir}\\1files'
 
 if not files_dir.exists():
     createdir.create_directory()
@@ -13,6 +14,7 @@ root = tk.Tk()
 
 # Defining a function that clears the board
 
+allfiles = cmd.allfiles
 deletefile = cmd.deletefile
 createfile = cmd.createfile
 
@@ -25,6 +27,9 @@ def refreshboard():
 
     clear_board_button = tk.Button(root, text='Clear Screen (Removes notices)', bg='yellow', command=refreshboard)
     clear_board_button.pack()
+
+    file_button = tk.Button(root, text=f'All files under the {path} directory', command=allfiles)
+    file_button.pack()
 
     openchoice = tk.Button(root, text='Open File', padx=30)
     deletechoice = tk.Button(root, text='Delete a file', padx=30, command=deletefile)
@@ -43,6 +48,9 @@ welcome_label.pack()
 
 clear_board_button = tk.Button(root, text='Clear Screen (Removes notices)', bg='yellow', command=refreshboard)
 clear_board_button.pack()
+
+file_button = tk.Button(root, text=f'All files under the {path} directory', command=allfiles)
+file_button.pack()
 
 openchoice = tk.Button(root, text='Open File', padx=30)
 deletechoice = tk.Button(root, text='Delete a file', padx=30, command=deletefile)
