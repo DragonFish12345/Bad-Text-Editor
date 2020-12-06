@@ -29,7 +29,7 @@ def instructions():
     s = f"""
     This text editor works like any other text editor, except it's just worse. All files created and deleted
     are in a folder in your home directory. The folder is called 1files, and the absolute directory
-    is {Path.home}\\1files. This editor can't undo, and once it's saved, it's there forever.
+    is {Path.home()}\\1files. This editor can't undo, and once it's saved, it's there forever.
     """
     instructions_label = tk.Label(root, text=s, bg=_from_rgb((32, 237, 59)))
     instructions_label.pack()
