@@ -2,6 +2,13 @@ import tkinter as tk
 import os
 from pathlib import Path
 
+def _from_rgb(rgb):
+    """
+    translates an rgb tuple of int to a tkinter friendly color code.
+    Credits to Reblochon Masque for this function.
+    """
+    return "#%02x%02x%02x" % rgb
+
 def allfiles():
     filedir = f'{Path.home()}\\1files'
     path = Path(filedir)
@@ -48,7 +55,33 @@ def createfile():
 
 
 def openfile():
-    pass
+    open_file_label = tk.Label(text='Enter a file to open. (All files button shows all the files in your directory!)')
+    open_file_label.pack()
+    open_choice_box = tk.Entry(bg='blue')
+    open_choice_box.pack()
+    def continuewithopen():
+        file_open_choice = open_choice_box.get()
+        file_open_path = Path(f'{Path.home()}/1files/{file_open_choice}')
+        if not file_open_path.exists():
+            doesntexist = tk.Label(text=f'{file_open_choice} doesn\'t exist')
+            doesntexist.pack()
+            return None
+        else:
+
+            f = open(f'{Path.home()}\\1files\\{file_open_choice}', 'r+')
+            original_text = f.read()
+            text_box = tk.Text(height=250, width=250)
+            def savefile():
+                f = open(f'{Path.home()}\\1files\\{file_open_choice}', 'w+')
+                a = text_box.get('1.0', 'end')
+                f.write(a)
+            save_button = tk.Button(text='Save', command=savefile)
+            text_box.insert(tk.END, original_text)
+            save_button.pack()
+            text_box.pack()
+
+    open_file_button = tk.Button(text='Continue', command=continuewithopen)
+    open_file_button.pack()
 
 
 def deletefile():
